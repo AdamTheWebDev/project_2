@@ -1,0 +1,28 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "method-override": "^2.3.8",
+    "mustache-express": "^1.2.4",
+    "pg-promise": "^5.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aroberts1985/Project2.git"
+  },
+  "author": "Adam Roberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aroberts1985/Project2/issues"
+  },
+  "homepage": "https://github.com/aroberts1985/Project2#readme"
+}
