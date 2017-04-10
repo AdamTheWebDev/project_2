@@ -31,7 +31,8 @@ app.get('/', function(req, res){
   if(req.session.user){
     let data = {
       "logged_in": true,
-      "email": req.session.user.email
+      "email": req.session.user.email,
+      "team_name": req.session.user.team_name
     };
 
     res.render('index', data);
@@ -39,14 +40,12 @@ app.get('/', function(req, res){
     res.render('index');
   }
 });
-
+//checking user in database and checking password to authenticate
 app.post('/login', function(req, res){
   let data = req.body;
   let auth_error = "Authorization Failed: Invalid email/password";
-
-  db
-    .one("SELECT * FROM users WHERE email = $1", [data.email])
-    .catch(function(){
+  db.one("SELECT * FROM users WHERE email = $1", [data.email])
+    .catch(function(){//catch all null or undifined errors and
       res.send(auth_error);
     })
     .then(function(user){
@@ -60,7 +59,7 @@ app.post('/login', function(req, res){
       });
     });
 });
-
+//sign up
 app.get('/signup', function(req, res){
   res.render('signup/index');
 });
@@ -70,8 +69,8 @@ app.post('/signup', function(req, res){
   bcrypt
     .hash(data.password, 10, function(err, hash){
       db.none(
-        "INSERT INTO users (email, password_digest) VALUES ($1, $2)",
-        [data.email, hash]
+        "INSERT INTO users (email, password_digest, team_name) VALUES ($1, $2, $3)",
+        [data.email, hash, data.team_name]
       ).catch(function(e){
         res.send('Failed to create user: ' + e);
       }).then(function(){
@@ -82,12 +81,21 @@ app.post('/signup', function(req, res){
 
 app.put('/user', function(req, res){
   db
-    .none("UPDATE users SET email = $1 WHERE email = $2",
+    .none("UPDATE users SET email = $1 WHERE email = $2 ",
       [req.body.email, req.session.user.email]
     ).catch(function(){
       res.send('Failed to update user.');
     }).then(function(){
       res.send('User updated.');
+    });
+});
+app.put('/user', function(req, res){
+  db.none("UPDATE users SET team_name = $1 WHERE team_name = $2 ",
+      [req.body.team_name, req.session.user.team_name]
+    ).catch(function(){
+      res.send('Failed to update Team Name.');
+    }).then(function(){
+      res.send('Team updated.');
     });
 });
 
