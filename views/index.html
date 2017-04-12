@@ -1,11 +1,14 @@
 <!doctype html>
 <html>
   <head>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
+  </head>
   <body>
-    <div>
-      <div>
-        <h1>FANTASY TEAM TRACKER</h1>
+    <div class="main-container">
+      <div class="border-container">
+        <h1>TEAM STAT TRACKER</h1>
         <br>
         {{#logged_in}}
         <div class="col-lg-6 center-block">
@@ -33,6 +36,10 @@
               </div>
             </fieldset>
           </form>
+
+          <p>GO to <a href="/team">Stat Tracker</a></p>
+
+
           <a href="/logout">Logout!</a>
         </div>
         {{/logged_in}}
@@ -62,6 +69,7 @@
               </fieldset>
             </form>
           </div>
+
           <p>Not a member? <a href="/signup">Sign Up!</a></p>
         </div>
         {{/logged_in}}
@@ -69,5 +77,3 @@
     </div>
   </body
 </html>
-<script src="/Users/adamroberts/Desktop/project2/public/js/jquery.js"></script>
-<script type="text/javascript" src="/Users/adamroberts/Desktop/project2/public/js/script.js"></script>

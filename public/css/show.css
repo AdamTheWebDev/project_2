@@ -1,0 +1,27 @@
+body{
+      font-family: tahoma, helvetica, arial, sans-serif;
+      font-size: 12px;
+      text-align: center;
+      background: #000;
+      color: #ddd4d4;
+      padding-top: 12px;
+      line-height: 2;
+      background-image: url('/Users/adamroberts/Desktop/project2/img/mlbteams.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100%;
+#nameteam{
+  color:black;
+}
+  }
+#team{
+  color: black;
+  top-margin: 10%;
+}
+p{
+  text: bold;
+  color: black;
+}
+.mets{
+  background-image: url(/Users/adamroberts/Desktop/project2/img/citifield.png);
+}

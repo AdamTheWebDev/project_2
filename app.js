@@ -74,19 +74,18 @@ app.post('/signup', function(req, res){
       ).catch(function(e){
         res.send('Failed to create user: ' + e);
       }).then(function(){
-        res.send('User created!');
+        res.redirect('/');
       });
     });
 });
 
 app.put('/user', function(req, res){
-  db
-    .none("UPDATE users SET email = $1 WHERE email = $2 ",
+  db.none("UPDATE users SET email = $1 WHERE email = $2 ",
       [req.body.email, req.session.user.email]
     ).catch(function(){
       res.send('Failed to update user.');
     }).then(function(){
-      res.send('User updated.');
+      res.redirect('/');
     });
 });
 app.put('/user', function(req, res){
@@ -103,6 +102,26 @@ app.get('/logout', function(req, res){
   req.session.user = false;
   res.redirect("/");
 });
+//on click of get stats route to render stat page show
+
+
+//get and post for team page find a venue
+app.get('/team', function(req, res){
+  res.render('team/show')
+});
+
+app.post('/team', function(req, res){
+    res.render('/team')
+  })
+
+
+
+
+
+
+
+
+
 
 app.listen(3000, function () {
   console.log('Server running, listening on port 3000!');
